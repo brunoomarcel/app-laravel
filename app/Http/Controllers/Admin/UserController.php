@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUserRequest;
 
 class UserController extends Controller
 {
@@ -19,9 +20,18 @@ class UserController extends Controller
         return view('admin.users.create');
     }
 
-    public function store(Request $request) {
+    public function store(StoreUserRequest $request) {
         User::create($request->all());
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'Usuario criado com sucesso!');
+    }
+
+    public function edit(string $id) {
+       
+        if(!$user = User::find($id)) {
+            return redirect()->route('users.index')->with('message', 'Usuário não encontrado!');
+        }
+
+        return view('admin.users.edit', compact('user'));
     }
 }
