@@ -13,8 +13,9 @@
     </ul>
 @endif
 
-<form action="{{ route('users.store') }}" method="post">
+<form action="{{ route('users.update', $user->id) }}" method="post">
     @csrf
+    @method('PUT')
     <input type="text" name="name" placeholder="Nome" value="{{ $user->name }}">
     <input type="email" name="email" placeholder="E-mail" value="{{ $user->email }}">
     <input type="password" name="password" placeholder="Senha">

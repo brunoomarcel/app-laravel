@@ -34,4 +34,8 @@ class UserController extends Controller
 
         return view('admin.users.edit', compact('user'));
     }
+
+    function update() {
+        dd('updating...');
+    }
 }
