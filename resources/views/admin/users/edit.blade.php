@@ -5,13 +5,13 @@
 @section('content')    
 <h1>Editar Usuário {{ $user->name }}</h1>
 
-@if ($errors->any())
+{{-- @if ($errors->any())
     <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
         @endforeach
     </ul>
-@endif
+@endif --}}
 
 <form action="{{ route('users.update', $user->id) }}" method="post">
     @csrf
@@ -19,6 +19,6 @@
     <input type="text" name="name" placeholder="Nome" value="{{ $user->name }}">
     <input type="email" name="email" placeholder="E-mail" value="{{ $user->email }}">
     <input type="password" name="password" placeholder="Senha">
-    <input type="submit" value="Cadastrar">
+    <input type="submit" value="Editar">
 </form>
 @endsection

@@ -10,6 +10,9 @@
     @endif
     <br>
     <a href="{{ route('users.create') }}">Novo Usuário</a>
+
+    <x-alert/>
+    
     <table>
         <thead>
             <tr>

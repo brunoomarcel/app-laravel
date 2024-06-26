@@ -5,13 +5,16 @@
 @section('content')    
 <h1>Novo Usuário</h1>
 
-@if ($errors->any())
+{{-- @inclue('admin.includes.alerts') --}}
+<x-alert/>
+
+{{-- @if ($errors->any())
     <ul>
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
         @endforeach
     </ul>
-@endif
+@endif --}}
 
 <form action="{{ route('users.store') }}" method="post">
     @csrf

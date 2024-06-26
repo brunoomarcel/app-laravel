@@ -35,7 +35,16 @@ class UserController extends Controller
         return view('admin.users.edit', compact('user'));
     }
 
-    function update() {
-        dd('updating...');
+    function update(Request $request, string $id) {
+
+        if(!$user = User::find($id)) {
+            return back()->with('message', 'Usuário não encontrado!');
+        }
+        $user->update($request->only([
+            'name',
+            'email',
+        ]));
+
+        return redirect()->route('users.index')->with('success', 'Usuário editado com sucesso!');
     }
 }
